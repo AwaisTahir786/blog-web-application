@@ -18,7 +18,7 @@ export async function blogData(slug: any) {
   return data;
 }
 
-async function BlogAritcle({ params }: any) {
+async function BlogAritcle({ params,}: { params: { slug: string }; }) {
   const data: fullBlogType = await blogData(params.slug);
   return (
     <div>
@@ -39,7 +39,7 @@ async function BlogAritcle({ params }: any) {
         className="rounded-lg mt-8 border"
       />
       <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary">
-        <PortableText value={data.content}/>
+        <PortableText value={data.content} />
       </div>
     </div>
   );
