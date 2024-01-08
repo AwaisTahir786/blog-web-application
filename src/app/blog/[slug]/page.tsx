@@ -1,11 +1,11 @@
 import { fullBlogType } from "@/app/lib/interface";
 import { client, urlfor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
-import { url } from "inspector";
 import Image from "next/image";
 import React from "react";
 
-export async function blogData(slug: any) {
+
+async function blogData(slug:string) {
   const query = `*[_type == "blog" && slug.current=='${slug}']
   {
     "currentslug":slug.current,
@@ -18,7 +18,7 @@ export async function blogData(slug: any) {
   return data;
 }
 
-async function BlogAritcle({ params,}: { params: { slug: string }; }) {
+async function BlogAritcle({ params}: { params: { slug: string }; }) {
   const data: fullBlogType = await blogData(params.slug);
   return (
     <div>
